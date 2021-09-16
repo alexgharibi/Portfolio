@@ -1,9 +1,9 @@
-import Expenses from "./pages/BusinessExpenses/Expenses";
+import ExpensesMainPage from "./pages/BusinessExpenses/ExpensesMainPage";
 
 function App() {
   return (
     <div>
-      <Expenses />
+      <ExpensesMainPage />
     </div>
   );
 }
