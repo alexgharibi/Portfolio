@@ -1,4 +1,5 @@
 import ExpensesItem from "./ExpensesItem";
+import classes from "./ExpensesMainPage.module.css";
 
 const ExpensesMainPage = () => {
   const expenses = [
@@ -24,7 +25,7 @@ const ExpensesMainPage = () => {
   ];
 
   return (
-    <div>
+    <div className={classes.expenses}>
       <ExpensesItem
         title={expenses[0].title}
         amount={expenses[0].amount}
