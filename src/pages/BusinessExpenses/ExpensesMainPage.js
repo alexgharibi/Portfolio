@@ -1,5 +1,6 @@
 import ExpensesItem from "./ExpensesItem";
 import classes from "./ExpensesMainPage.module.css";
+import NewExpense from "./NewExpense/NewExpense";
 
 const ExpensesMainPage = () => {
   const expenses = [
@@ -25,12 +26,15 @@ const ExpensesMainPage = () => {
   ];
 
   return (
-    <div className={classes.expenses}>
-      <ExpensesItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      ></ExpensesItem>
+    <div>
+      <NewExpense />
+      <div className={classes.expenses}>
+        <ExpensesItem
+          title={expenses[0].title}
+          amount={expenses[0].amount}
+          date={expenses[0].date}
+        ></ExpensesItem>
+      </div>
     </div>
   );
 };
