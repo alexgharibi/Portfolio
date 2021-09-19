@@ -1,8 +1,11 @@
+import ExpensesFilter from "./ExpenseFilter/ExpenseFilters";
 import ExpensesItem from "./ExpensesItem";
 import classes from "./ExpensesMainPage.module.css";
 import NewExpense from "./NewExpense/NewExpense";
+import { useState } from "react";
 
 const ExpensesMainPage = () => {
+  const [filteredYear, setFilteredYear] = useState("2020");
   const expenses = [
     {
       id: "e1",
@@ -25,10 +28,20 @@ const ExpensesMainPage = () => {
     },
   ];
 
+  const addExpenseHandler = (expense) => {};
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <div className={classes.expenses}>
+        <ExpensesFilter
+          onChangeFilter={filterChangeHandler}
+          selectedFilter={filteredYear}
+        />
         <ExpensesItem
           title={expenses[0].title}
           amount={expenses[0].amount}
