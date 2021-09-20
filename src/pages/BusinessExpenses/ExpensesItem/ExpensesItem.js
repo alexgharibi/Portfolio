@@ -7,7 +7,7 @@ const ExpensesItem = (props) => {
       <div className={classes["expense-item"]}>
         <ExpensesDate date={props.date} />
         <div className={classes["expense-item__description"]}>
-          <h2 layout>{props.title}</h2>
+          <h2>{props.title}</h2>
           <div className={classes["expense-item__price"]}>${props.amount}</div>
         </div>
       </div>

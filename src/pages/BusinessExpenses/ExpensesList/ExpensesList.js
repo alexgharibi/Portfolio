@@ -1,27 +1,43 @@
 import classes from "./ExpensesList.module.css";
 import ExpensesItem from "../ExpensesItem/ExpensesItem";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "framer-motion";
 
 const ExpensesList = (props) => {
+  const isPresent = useIsPresent();
+  const animation = {
+    style: { position: isPresent ? "static" : "absolute" },
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0, opacity: 0 },
+    transition: { type: "spring", stiffness: 500, damping: 50 },
+  };
   if (props.items.length === 0) {
     return (
-      <motion.h2 layout className={classes["expenses-list__fallback"]}>
-        No Expenses Found
-      </motion.h2>
+      <AnimatePresence>
+        <motion.h2
+          layout
+          {...animation}
+          className={classes["expenses-list__fallback"]}
+        >
+          No Expenses Found
+        </motion.h2>
+      </AnimatePresence>
     );
   }
 
   return (
-    <motion.ul layout className={classes["expenses-list"]}>
-      {props.items.map((expense) => (
-        <ExpensesItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
-    </motion.ul>
+    <AnimatePresence>
+      <motion.ul layout {...animation} className={classes["expenses-list"]}>
+        {props.items.map((expense) => (
+          <ExpensesItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+      </motion.ul>
+    </AnimatePresence>
   );
 };
 
