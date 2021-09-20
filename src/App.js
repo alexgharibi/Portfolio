@@ -4,7 +4,7 @@ import MainAnimationPage from "./pages/Animations/MainAnimationPage";
 function App() {
   return (
     <div>
-      <MainAnimationPage />
+      <ExpensesMainPage />
     </div>
   );
 }
