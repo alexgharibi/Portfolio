@@ -1,9 +1,17 @@
+import React from "react";
+import logo from "../../image/bbbb.jpeg";
+import Navbar from "../NavBar/NavBar";
 import classes from "./MainPage.module.css";
+
 const MainPage = () => {
   return (
-    <div className={classes.background}>
-      <h1 style={{ paddingTop: "30%" }}>Home</h1>
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <div className={classes.background}>
+        <div>hellooo</div>
+        <footer>Helloo</footer>
+      </div>
+    </React.Fragment>
   );
 };
 

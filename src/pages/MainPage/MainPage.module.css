@@ -1,5 +1,8 @@
 .background {
-  background-image: url("../../image/ales-nesetril-Im7lZjxeLhg-unsplash.jpg");
-  height: 100vh;
+  background-image: url("../../image/bbbb.jpeg");
+  height: 88vh;
+  width: 100%;
   background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 255);
 }
