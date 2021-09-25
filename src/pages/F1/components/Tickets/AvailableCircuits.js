@@ -11,7 +11,7 @@ const DUMMY_TICKETS = [
   },
   {
     id: "m2",
-    name: "United states GP",
+    name: "United States GP",
     description: "Austin",
     price: 16.5,
   },
@@ -33,6 +33,7 @@ const AvailableCircuits = () => {
   const ticketList = DUMMY_TICKETS.map((ticket) => (
     <TicketItem
       key={ticket.id}
+      id={ticket.id}
       name={ticket.name}
       description={ticket.description}
       price={ticket.price}

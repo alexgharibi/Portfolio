@@ -10,7 +10,7 @@ const Header = (props) => {
         <h2>
           <em>F1</em> Fake Tickets
         </h2>
-        <HeaderCartButton />
+        <HeaderCartButton showCart={props.onShowCart} />
       </header>
       <div className={classes["main-image"]}>
         <img src={F1MainPic} alt="F1 Body" />

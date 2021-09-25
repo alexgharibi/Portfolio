@@ -18,3 +18,7 @@
   background-color: #f5652d;
   border-color: #f5652d;
 }
+
+.form > p {
+  color: white;
+}

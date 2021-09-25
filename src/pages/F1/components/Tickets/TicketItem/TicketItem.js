@@ -1,8 +1,22 @@
 import classes from "./TicketItem.module.css";
 import TicketItemForm from "./TicketItemForm";
+import React, { useContext } from "react";
+import CartContext from "./../../../store/cart-context";
 
 const TicketItem = (props) => {
+  const cartCTX = useContext(CartContext);
+
   const price = `$${props.price.toFixed(2)}`;
+
+  const addToCartHandler = (amount) => {
+    cartCTX.addItem({
+      id: props.id,
+      name: props.name,
+      amount: amount,
+      price: props.price,
+    });
+  };
+
   return (
     <li className={classes.ticket}>
       <div>
@@ -11,7 +25,7 @@ const TicketItem = (props) => {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-        <TicketItemForm />
+        <TicketItemForm onAddToCart={addToCartHandler} />
       </div>
     </li>
   );
