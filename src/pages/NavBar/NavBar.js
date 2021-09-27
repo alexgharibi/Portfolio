@@ -61,6 +61,11 @@ const Navbar = () => {
               <i className="far fa-address-book"></i>F1
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/ingrediants" exact>
+              <i className="far fa-address-book"></i>React Hooks
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
