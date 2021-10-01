@@ -54,6 +54,7 @@ i {
   background-color: transparent;
   transition: all 0.7s;
 }
+
 #navbarSupportedContent a:not(:only-child):after {
   content: "\f105";
   position: absolute;
