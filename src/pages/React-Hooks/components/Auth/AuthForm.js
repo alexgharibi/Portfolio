@@ -1,5 +1,4 @@
-import { useState, useRef, useContext } from "react";
-import { AuthContext } from "../../context/auth-context";
+import { useState, useRef } from "react";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import classes from "./AuthForm.module.css";
@@ -7,8 +6,6 @@ import useAuthHttp from "./../../hooks/use-AuthHttp";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-
-  const authCtx = useContext(AuthContext);
 
   const { error, isLoading, fetchHandler, clear } = useAuthHttp();
 

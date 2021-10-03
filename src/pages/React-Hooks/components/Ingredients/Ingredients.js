@@ -1,10 +1,17 @@
-import React, { useReducer, useEffect, useCallback, useMemo } from "react";
-
+import React, {
+  useReducer,
+  useEffect,
+  useCallback,
+  useMemo,
+  useContext,
+} from "react";
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
 import ErrorModal from "../UI/ErrorModal";
 import Search from "./Search";
 import useHttp from "../../hooks/http";
+import { AuthContext } from "../../context/auth-context";
+import classes from "./Ingredients.module.css";
 
 const ingredientReducer = (currentIngredients, action) => {
   switch (action.type) {
@@ -23,6 +30,8 @@ const Ingredients = () => {
   const [userIngredients, dispatch] = useReducer(ingredientReducer, []);
   const { isLoading, error, data, sendRequest, reqExtra, reqIdentifer, clear } =
     useHttp();
+
+  const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     if (!isLoading && !error && reqIdentifer === "REMOVE_INGREDIENT") {
@@ -77,7 +86,6 @@ const Ingredients = () => {
   return (
     <div className="App">
       {error && <ErrorModal onClose={clear}>{error}</ErrorModal>}
-
       <IngredientForm
         onAddIngredient={addIngredientHandler}
         loading={isLoading}

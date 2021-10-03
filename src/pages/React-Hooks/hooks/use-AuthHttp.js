@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth-context";
+import { useHistory } from "react-router-dom";
 
 const useAuthHttp = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
 
   const authCtx = useContext(AuthContext);
 
@@ -26,7 +29,11 @@ const useAuthHttp = () => {
       }
 
       const data = await response.json();
-      authCtx.login(data.idToken);
+      const expirationTime = new Date(
+        new Date().getTime() + +data.expiresIn * 1000
+      );
+      authCtx.login(data.idToken, expirationTime.toISOString());
+      history.replace("/homepage");
     } catch (err) {
       setError(err.message || "Something went wrong!");
     }
