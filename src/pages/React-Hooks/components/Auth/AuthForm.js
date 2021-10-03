@@ -1,13 +1,16 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingIndicator from "../UI/LoadingIndicator";
-
 import classes from "./AuthForm.module.css";
+import useAuthHttp from "./../../hooks/use-AuthHttp";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const authCtx = useContext(AuthContext);
+
+  const { error, isLoading, fetchHandler, clear } = useAuthHttp();
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -22,41 +25,58 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     // validation
-    setIsLoading(true);
-    if (isLogin) {
-    } else {
-      //addcustomhook
-      fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAAnLh44OupXHGShLbagyteUaQI1Jz-13A",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((response) => {
-        setIsLoading(false);
-        if (response.ok) {
-        } else {
-          return response.json().then((data) => {
-            let errorMessage = "Authentication failed!";
-            if (data && data.error && data.error.message) {
-              errorMessage = data.error.message;
-            }
-            setError(errorMessage || "Authentication Failed");
-          });
-        }
-      });
-    }
-  };
 
-  const clear = () => {
-    setError(null);
+    let url;
+    if (isLogin) {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAAnLh44OupXHGShLbagyteUaQI1Jz-13A";
+    } else {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAAnLh44OupXHGShLbagyteUaQI1Jz-13A";
+    }
+
+    fetchHandler(
+      url,
+      "POST",
+      {
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      },
+      {
+        "Content-Type": "application/json",
+      }
+    );
+
+    // fetch(url, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email: enteredEmail,
+    //     password: enteredPassword,
+    //     returnSecureToken: true,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => {
+    //     setIsLoading(false);
+    //     if (response.ok) {
+    //       return response.json();
+    //     } else {
+    //       return response.json().then((data) => {
+    //         let errorMessage = "Authentication failed!";
+    //         throw new Error(errorMessage);
+    //       });
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     authCtx.login(data.idToken);
+    //   })
+    //   .catch((err) => {
+    //     setError(err.message || "Authentication Failed");
+    //   });
   };
 
   return (
