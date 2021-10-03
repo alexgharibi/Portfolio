@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
 import { animation } from "./NavFunction";
+import { AuthContext } from "../React-Hooks/context/auth-context";
 
 const Navbar = () => {
+  const authCtx = useContext(AuthContext);
+
   useEffect(() => {
     animation();
     $(window).on("resize", function () {
@@ -62,7 +65,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/ingrediants" exact>
+            <NavLink
+              className="nav-link"
+              to={authCtx.isLoggedIn ? "/homepage" : "/auth"}
+              exact
+            >
               <i className="far fa-address-book"></i>React Hooks
             </NavLink>
           </li>
