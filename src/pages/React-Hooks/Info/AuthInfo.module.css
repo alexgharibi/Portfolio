@@ -1,0 +1,45 @@
+.body {
+  border: 5px solid #f35516;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px 20px;
+  border-radius: 14px;
+}
+
+.body h3 {
+  text-align: center;
+}
+
+.body p {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.actions {
+  text-align: right;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #f35516;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #da4d15;
+  border-color: #da4d15;
+  color: black;
+  font-weight: 700;
+}
+
+.actions .button {
+  background-color: #f35516;
+  color: black;
+  font-weight: 700;
+}

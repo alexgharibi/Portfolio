@@ -70,7 +70,7 @@ const Navbar = () => {
               to={authCtx.isLoggedIn ? "/homepage" : "/auth"}
               exact
             >
-              <i className="far fa-address-book"></i>React Hooks
+              <i className="far fa-address-book"></i>Authentication
             </NavLink>
           </li>
         </ul>

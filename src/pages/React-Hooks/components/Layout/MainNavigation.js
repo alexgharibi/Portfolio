@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
+import { useHistory } from "react-router-dom";
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
+
+  const history = useHistory();
 
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = () => {
     authCtx.logout();
+    history.push("/");
   };
 
   return (
