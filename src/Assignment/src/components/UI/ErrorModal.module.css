@@ -1,0 +1,64 @@
+.error-modal {
+  position: fixed;
+  top: 30vh;
+
+  width: 20rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 100;
+  border-radius: 7px;
+}
+
+.error-modal h2 {
+  margin: 0;
+  padding: 1rem;
+  background-color: teal;
+  color: white;
+  border-radius: 7px 7px 0 0;
+}
+
+.error-modal p {
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.error-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.btn {
+  color: white;
+  border: 0;
+  padding: 5px 15px;
+  outline: none;
+  font-weight: 600;
+  background-color: teal;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.btn:hover {
+  background-color: rgb(4, 175, 175);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .error-modal {
+    width: 30rem;
+    left: calc(50% - 15rem);
+  }
+}
